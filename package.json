@@ -1,0 +1,14 @@
+{
+  "name": "node-hackernews-graphql",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:BolajiOlajide/node-hackernews-graphql.git",
+  "author": "Bolaji Olajide",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "graphql-yoga": "^1.14.0"
+  }
+}
