@@ -1,22 +1,29 @@
-const { GraphQLServer } = require('graphql-yoga')
+const { GraphQLServer } = require('graphql-yoga');
+const links = require('./links');
+const shortid = require('shortid');
 
-// 1
-const typeDefs = `
-type Query {
-  info: String!
-}
-`
 
-// 2
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`
+    info: () => `This is the API of a Hackernews Clone`,
+    feed: () => links,
+  },
+  Mutation: {
+    post: (root, args) => {
+      const link = {
+        id: shortid.generate(),
+        description: args.description,
+        url: args.url,
+      }
+      links.push(link)
+      return link
+    }
   }
-}
+};
 
 // 3
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: './src/schema.graphql',
   resolvers,
 });
 
