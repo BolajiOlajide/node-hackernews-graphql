@@ -1,11 +1,12 @@
 const { GraphQLServer } = require('graphql-yoga');
-let links = require('./links');
 const shortid = require('shortid');
+
+let links = require('./links');
 
 
 const resolvers = {
   Query: {
-    info: () => `This is the API of a Hackernews Clone`,
+    info: () => 'This is the API of a Hackernews Clone',
     links: () => links,
     link: (_, { id }) => links.find(link => link.id == id)
   },
