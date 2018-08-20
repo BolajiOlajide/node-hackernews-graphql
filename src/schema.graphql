@@ -1,9 +1,11 @@
 type Query {
   info: String!
   links: [Link!]!
+  users: [User!]!
 
   # Fetch a single link by its `id`
   link(id: ID!): Link
+  user(id: ID!): User
 }
 
 type Mutation {
@@ -15,10 +17,25 @@ type Mutation {
 
   # Delete a link
   deleteLink(id: ID!): [Link]
+
+  # create a user
+  createUser(firstName: String!, lastName: String!): User!
+
+  # Update a link
+  updateUser(id: ID!, firstName: String, lastName: String): User
+
+  # Delete a link
+  deleteUser(id: ID!): [User]
 }
 
 type Link {
   id: ID!
   url: String!
   description: String!
+}
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
 }

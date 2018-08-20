@@ -1,11 +1,14 @@
+const shortid = require('shortid');
+
+
 let links = [
   {
-    id: 'link-0',
+    id: shortid.generate(),
     url: 'www.howtographql.com',
     description: 'Fullstack tutorial for GraphQL'
   },
   {
-    id: 'link-1',
+    id: shortid.generate(),
     url: 'www.facebook.com',
     description: 'Social Network: Facebook'
   }
