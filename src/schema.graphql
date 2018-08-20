@@ -15,6 +15,8 @@ type Query {
 }
 
 type Mutation {
+  signup(email: String!, password: String!, name: String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
   # create a link
   createLink(url: String!, description: String!): Link!
 
@@ -35,4 +37,16 @@ type Mutation {
 
   # Delete a link
   deleteUser(id: ID!): [User]
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  links: [Link!]!
 }
