@@ -3,6 +3,9 @@ type Query {
   links: [Link!]!
   users: [User!]!
 
+  # alias for links but with Prisma
+  feed: [Link!]!
+
   # Fetch a single link by its `id`
   link(id: ID!): Link
   user(id: ID!): User
@@ -11,6 +14,9 @@ type Query {
 type Mutation {
   # create a link
   createLink(url: String!, description: String!): Link!
+
+  # Alias for createLink but with Prisma
+  post(url: String!, description: String!): Link!
 
   # Update a link
   updateLink(id: ID!, url: String, description: String): Link

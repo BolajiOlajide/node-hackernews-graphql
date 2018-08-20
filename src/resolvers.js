@@ -7,6 +7,9 @@ const resolvers = {
   Query: {
     info: () => 'This is the API of a Hackernews Clone',
     links: () => links,
+    feed: (root, args, context, info) => { // alias for links
+      return context.db.query.links({}, info)
+    },
     link: (_, { id }) => links.find(link => link.id == id),
     users: () => users,
     user: (_, { id }) => users.find(user => user.id == id),
@@ -21,6 +24,14 @@ const resolvers = {
 
       links.push(link);
       return link;
+    },
+    post: (root, args, context, info) => {
+      return context.db.mutation.createLink({
+        data: {
+          url: args.url,
+          description: args.description,
+        },
+      }, info)
     },
     updateLink: (_, { id, url, description }) => {
       const updatedLink = { id,
