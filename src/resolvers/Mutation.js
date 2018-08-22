@@ -39,6 +39,8 @@ async function login(parent, args, context, info) {
 
 function post(root, args, context, info) {
   const userId = getUserId(context);
+  // let userId = "cjl2ll1ug9zds0b46ux6iulz7";
+
   return context.db.mutation.createLink({
     data: {
       url: args.url,
